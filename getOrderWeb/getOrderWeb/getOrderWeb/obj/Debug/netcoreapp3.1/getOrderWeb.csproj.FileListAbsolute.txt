@@ -85,3 +85,4 @@ G:\drive_D\c#\My Projects\getOrder\getOrderWeb\getOrderWeb\getOrderWeb\obj\Debug
 G:\drive_D\c#\My Projects\getOrder\getOrderWeb\getOrderWeb\getOrderWeb\obj\Debug\netcoreapp3.1\getOrderWeb.dll
 G:\drive_D\c#\My Projects\getOrder\getOrderWeb\getOrderWeb\getOrderWeb\obj\Debug\netcoreapp3.1\getOrderWeb.pdb
 G:\drive_D\c#\My Projects\getOrder\getOrderWeb\getOrderWeb\getOrderWeb\obj\Debug\netcoreapp3.1\getOrderWeb.genruntimeconfig.cache
+G:\drive_D\c#\My Projects\getOrder\getOrderWeb\getOrderWeb\getOrderWeb\obj\Debug\netcoreapp3.1\getOrderWeb.csprojAssemblyReference.cache
