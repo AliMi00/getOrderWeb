@@ -11,7 +11,7 @@ namespace getOrderWeb.Models.DbModels
         public Order Order { get; set; }
         public Product Product { get; set; }
         //Product Price When Product was Sold
-        public int UnitPriceBuy { get; set; }
+        public int UnitPriceSell { get; set; }
         public int UnitPriceCost { get; set; }
         public int Quantity { get; set; }
         public double Discount { get; set; }

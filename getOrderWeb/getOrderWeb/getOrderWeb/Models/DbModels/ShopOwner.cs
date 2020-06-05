@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace getOrderWeb.Models.DbModels
 {
-    public class ShopOwner :IdentityUser
+    public class ShopOwner : IdentityUser
     {
         public string PostCode { get; set; }
         public string Address { get; set; }

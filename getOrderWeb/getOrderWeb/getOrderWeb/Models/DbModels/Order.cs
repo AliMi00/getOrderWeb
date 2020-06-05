@@ -9,7 +9,7 @@ namespace getOrderWeb.Models.DbModels
     {
         public int Id { get; set; }
         public DateTime OrderDate { get; set; }
-        public int AmountBuy { get; set; }
+        public int AmountSell { get; set; }
         public int AmountCost { get; set; }
         public int Profit { get; set; }
         public Customer Customer { get; set; }
@@ -19,7 +19,7 @@ namespace getOrderWeb.Models.DbModels
         #nullable restore
         public DateTime? PaymentDate { get; set; }
         public ICollection<OrderDetail> OrderDetails { get; set; }
-        public Shop Shop { get; set; }
+        public ShopOwner ShopOwner { get; set; }
 
     }
 }
