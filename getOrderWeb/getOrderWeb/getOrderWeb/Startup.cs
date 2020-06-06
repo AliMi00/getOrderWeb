@@ -12,6 +12,8 @@ using getOrderWeb.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using getOrderWeb.Services;
+using getOrderWeb.Middlewares;
 
 namespace getOrderWeb
 {
@@ -59,6 +61,11 @@ namespace getOrderWeb
             services.AddRazorPages();
             services.AddMvc();
             services.AddTransient<IApplicationDbContext, ApplicationDbContext>();
+            services.AddTransient<IProductServices, ProductServices>();
+            services.AddTransient<IOrderServices, OrderServices>();
+            services.AddHostedService<ScheduleTask>();
+
+
 
 
         }
@@ -77,6 +84,8 @@ namespace getOrderWeb
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+            //app.ChangeRequestUrl();
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 

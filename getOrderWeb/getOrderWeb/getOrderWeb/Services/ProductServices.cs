@@ -14,7 +14,6 @@ namespace getOrderWeb.Services
         {
             db = _db;
         }
-
         public List<ProductViewModel> GetProducts(int CategoryId, bool Delete = false)
         {
             return db.Products
@@ -37,7 +36,6 @@ namespace getOrderWeb.Services
                     price = x.SellPrice
                 }).ToList();
         }
-
         public List<ProductViewModel> GetProducts(string CategoryName, bool Delete = false)
         {
             return GetProducts(GetCategoryId(CategoryName), Delete);

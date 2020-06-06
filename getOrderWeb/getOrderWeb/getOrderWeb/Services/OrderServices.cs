@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace getOrderWeb.Services
 {
-    public class OrderServices
+    public class OrderServices : IOrderServices
     {
         private readonly IApplicationDbContext db;
         public OrderServices(IApplicationDbContext _db)
@@ -126,6 +126,39 @@ namespace getOrderWeb.Services
         public Customer getCustomer(int customerId)
         {
             return db.Customers.SingleOrDefault(c => c.Id == customerId);
+
+        }
+        public int validateOrders()
+        {
+            var orders = db.Orders.Include(o => o.OrderDetails).ToList();
+            //In OrderStatusType Enum, there is a 1000 step distance between temp values and
+            //real values, so they can simply turn into each other
+            //for more info,
+            ///<seealso cref="OrderStatusTypes"/>
+            const int Status_Temp_Distance = 1000;
+            orders.AsParallel()
+                .ForAll(o =>
+                {
+                    var detailsPriceSum = o.OrderDetails.Where(od => !od.DeleteDate.HasValue).Sum(odp => odp.UnitPriceCost);
+                    if (o.AmountCost != detailsPriceSum)
+                    {
+                        o.AmountCost = detailsPriceSum;
+                        o.OrderStatus = o.OrderStatus + Status_Temp_Distance;
+
+                    }
+                });
+            var totalChanged = 0;
+            orders.ForEach(o =>
+            {
+                if ((int)o.OrderStatus >= Status_Temp_Distance)
+                {
+                    totalChanged++;
+                    o.OrderStatus = o.OrderStatus - Status_Temp_Distance;
+                }
+            });
+
+            db.SaveChanges();
+            return totalChanged;
 
         }
     }
