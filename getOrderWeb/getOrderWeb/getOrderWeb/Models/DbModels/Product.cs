@@ -13,12 +13,10 @@ namespace getOrderWeb.Models.DbModels
         public string Description { get; set; }
         public int SellPrice { get; set; }
         public int BuyPrice { get; set; }
-
-        public string PictureAddress { get; set; }
         public DateTime CreationDate { get; set; }
         public DateTime?  DisableDate { get; set; }
         public DateTime? RemoveDate { get; set; }
-        public Shop Shop { get; set; }
+        public ShopOwner ShopOwner { get; set; }
         public ICollection<ProductCategory> ProductCategories { get; set; }
     }
 }

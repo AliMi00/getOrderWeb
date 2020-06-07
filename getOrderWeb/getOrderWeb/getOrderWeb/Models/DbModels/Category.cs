@@ -18,10 +18,7 @@ namespace getOrderWeb.Models.DbModels
         public DateTime CreationDate { get; set; }
         public DateTime? DisableDate { get; set; }
         public DateTime? RemoveDate { get; set; }
-        [MaxLength(100)]
-        public string PictureAddress { get; set; }
-
-        public Shop Shop { get; set; }
+        public ShopOwner ShopOwner { get; set; }
 
     }
 }

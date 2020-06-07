@@ -1,6 +1,7 @@
 ﻿@using Microsoft.AspNetCore.Identity
-@inject SignInManager<IdentityUser> SignInManager
-@inject UserManager<IdentityUser> UserManager
+@using getOrderWeb.Models.DbModels
+@inject SignInManager<ShopOwner> SignInManager
+@inject UserManager<ShopOwner> UserManager
 
 <ul class="navbar-nav">
 @if (SignInManager.IsSignedIn(User))

@@ -25,7 +25,7 @@ namespace getOrderWeb
                     webBuilder.UseKestrel(option =>
                    {
                        option.Listen(IPAddress.Parse("0.0.0.0")
-                           , 10000, x =>
+                           , 11000, x =>
                           {
                               x.UseHttps();
                           });

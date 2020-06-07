@@ -14,10 +14,12 @@ namespace getOrderWeb.Data
         DbSet<ProductCategory> ProductCategories { get; set; }
         DbSet<Product> Products { get; set; }
         DbSet<ShopOwner> ShopOwners { get; set; }
-        DbSet<Shop> Shops { get; set; }
 
         void Dispose();
         int SaveChanges();
         Task<int> SaveChangesAsync(bool acceptAllChangesOnSuccess, CancellationToken cancellationToken = default);
+        Task SaveChangesAsync();
+        void Add(Order order);
+        void Update(Order order);
     }
 }

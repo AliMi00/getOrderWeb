@@ -7,7 +7,7 @@ namespace getOrderWeb.Services
     {
         Customer getCustomer(int customerId);
         Order GetOrder(string username, int? orderId = null, OrderStatusTypes? status = OrderStatusTypes.Open, bool withIncludes = false);
-        Product GetProduct(int productId);
+        Product GetProduct(int productId,ShopOwner shopOwner);
         ShopOwner GetShopOwner(string username);
         ProductAddedResponseViewModel SaveOrder(string username, int productId, int quantity = 1, int customerId = 1);
         int validateOrders();

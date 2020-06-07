@@ -16,13 +16,14 @@ namespace getOrderWeb.Services
         {
             db = _db;
         }
+
         //add order details to order or creat and add 
         //customer id 1 is defualt custome for those who dont want use customer option
         public ProductAddedResponseViewModel SaveOrder(string username, int productId, int quantity = 1, int customerId = 1)
         {
             var responseModel = new ProductAddedResponseViewModel();
             var shopOwner = this.GetShopOwner(username);
-            var product = this.GetProduct(productId);
+            var product = this.GetProduct(productId, shopOwner);
             var customer = this.getCustomer(customerId);
             Order order;
 
@@ -81,14 +82,17 @@ namespace getOrderWeb.Services
 
             return responseModel;
         }
+
         public ShopOwner GetShopOwner(string username)
         {
             return db.ShopOwners.SingleOrDefault(s => s.UserName == username);
         }
-        public Product GetProduct(int productId)
+
+        public Product GetProduct(int productId , ShopOwner shopOwner)
         {
-            return db.Products.SingleOrDefault(p => p.Id == productId && !p.DisableDate.HasValue && !p.RemoveDate.HasValue);
+            return db.Products.SingleOrDefault(p => p.Id == productId && p.ShopOwner.Id == shopOwner.Id && !p.DisableDate.HasValue && !p.RemoveDate.HasValue );
         }
+
         public Order GetOrder(string username, int? orderId = null, OrderStatusTypes? status = OrderStatusTypes.Open, bool withIncludes = false)
         {
             Order order = null;
@@ -123,11 +127,13 @@ namespace getOrderWeb.Services
                     return order;
             }
         }
+
         public Customer getCustomer(int customerId)
         {
             return db.Customers.SingleOrDefault(c => c.Id == customerId);
 
         }
+
         public int validateOrders()
         {
             var orders = db.Orders.Include(o => o.OrderDetails).ToList();
@@ -161,5 +167,7 @@ namespace getOrderWeb.Services
             return totalChanged;
 
         }
+
+
     }
 }

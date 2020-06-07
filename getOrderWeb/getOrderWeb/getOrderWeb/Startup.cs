@@ -14,6 +14,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using getOrderWeb.Services;
 using getOrderWeb.Middlewares;
+using getOrderWeb.Models.DbModels;
 
 namespace getOrderWeb
 {
@@ -38,9 +39,9 @@ namespace getOrderWeb
 
 
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(
-                    ConnectionString));
-            services.AddDefaultIdentity<IdentityUser>(options =>
+                options.UseSqlServer(ConnectionString));
+            //identity and authentication options disable some authentication option for debuging 
+            services.AddDefaultIdentity<ShopOwner>(options =>
             {
                 options.SignIn.RequireConfirmedAccount = false;
                 options.SignIn.RequireConfirmedEmail = false;
@@ -55,8 +56,8 @@ namespace getOrderWeb
                 options.Password.RequireUppercase = false;
 
             })
-
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+
             services.AddControllersWithViews();
             services.AddRazorPages();
             services.AddMvc();
@@ -64,7 +65,6 @@ namespace getOrderWeb
             services.AddTransient<IProductServices, ProductServices>();
             services.AddTransient<IOrderServices, OrderServices>();
             services.AddHostedService<ScheduleTask>();
-
 
 
 

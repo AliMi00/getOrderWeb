@@ -70,77 +70,6 @@ namespace getOrderWeb.Data.Migrations
                     b.ToTable("AspNetRoleClaims");
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUser", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("AccessFailedCount")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ConcurrencyStamp")
-                        .IsConcurrencyToken()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Discriminator")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Email")
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
-
-                    b.Property<bool>("EmailConfirmed")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("LockoutEnabled")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTimeOffset?>("LockoutEnd")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<string>("NormalizedEmail")
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
-
-                    b.Property<string>("NormalizedUserName")
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
-
-                    b.Property<string>("PasswordHash")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PhoneNumber")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("PhoneNumberConfirmed")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("SecurityStamp")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("TwoFactorEnabled")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("UserName")
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("NormalizedEmail")
-                        .HasName("EmailIndex");
-
-                    b.HasIndex("NormalizedUserName")
-                        .IsUnique()
-                        .HasName("UserNameIndex")
-                        .HasFilter("[NormalizedUserName] IS NOT NULL");
-
-                    b.ToTable("AspNetUsers");
-
-                    b.HasDiscriminator<string>("Discriminator").HasValue("IdentityUser");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
                     b.Property<int>("Id")
@@ -238,15 +167,11 @@ namespace getOrderWeb.Data.Migrations
                     b.Property<DateTime?>("DisableDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("PictureAddress")
-                        .HasColumnType("nvarchar(100)")
-                        .HasMaxLength(100);
-
                     b.Property<DateTime?>("RemoveDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("ShopId")
-                        .HasColumnType("int");
+                    b.Property<string>("ShopOwnerId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Title")
                         .IsRequired()
@@ -255,7 +180,7 @@ namespace getOrderWeb.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ShopId");
+                    b.HasIndex("ShopOwnerId");
 
                     b.ToTable("Categories");
                 });
@@ -270,9 +195,6 @@ namespace getOrderWeb.Data.Migrations
                     b.Property<string>("Address")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Family")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
@@ -282,12 +204,7 @@ namespace getOrderWeb.Data.Migrations
                     b.Property<string>("PostCode")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("ShopId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("ShopId");
 
                     b.ToTable("Customers");
                 });
@@ -299,10 +216,10 @@ namespace getOrderWeb.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("AmountBuy")
+                    b.Property<int>("AmountCost")
                         .HasColumnType("int");
 
-                    b.Property<int>("AmountCost")
+                    b.Property<int>("AmountSell")
                         .HasColumnType("int");
 
                     b.Property<string>("Authority")
@@ -323,14 +240,14 @@ namespace getOrderWeb.Data.Migrations
                     b.Property<int>("Profit")
                         .HasColumnType("int");
 
-                    b.Property<int?>("ShopId")
-                        .HasColumnType("int");
+                    b.Property<string>("ShopOwnerId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("CustomerId");
 
-                    b.HasIndex("ShopId");
+                    b.HasIndex("ShopOwnerId");
 
                     b.ToTable("Orders");
                 });
@@ -363,10 +280,10 @@ namespace getOrderWeb.Data.Migrations
                     b.Property<double>("Tax")
                         .HasColumnType("float");
 
-                    b.Property<int>("UnitPriceBuy")
+                    b.Property<int>("UnitPriceCost")
                         .HasColumnType("int");
 
-                    b.Property<int>("UnitPriceCost")
+                    b.Property<int>("UnitPriceSell")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -397,24 +314,21 @@ namespace getOrderWeb.Data.Migrations
                     b.Property<DateTime?>("DisableDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("PictureAddress")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<DateTime?>("RemoveDate")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("SellPrice")
                         .HasColumnType("int");
 
-                    b.Property<int?>("ShopId")
-                        .HasColumnType("int");
+                    b.Property<string>("ShopOwnerId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ShopId");
+                    b.HasIndex("ShopOwnerId");
 
                     b.ToTable("Products");
                 });
@@ -450,46 +364,75 @@ namespace getOrderWeb.Data.Migrations
                     b.ToTable("ProductCategories");
                 });
 
-            modelBuilder.Entity("getOrderWeb.Models.DbModels.Shop", b =>
+            modelBuilder.Entity("getOrderWeb.Models.DbModels.ShopOwner", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("AccessFailedCount")
+                        .HasColumnType("int");
 
                     b.Property<string>("Address")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Phone")
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(256)")
+                        .HasMaxLength(256);
+
+                    b.Property<bool>("EmailConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("LockoutEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTimeOffset?>("LockoutEnd")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("NormalizedEmail")
+                        .HasColumnType("nvarchar(256)")
+                        .HasMaxLength(256);
+
+                    b.Property<string>("NormalizedUserName")
+                        .HasColumnType("nvarchar(256)")
+                        .HasMaxLength(256);
+
+                    b.Property<string>("PasswordHash")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("PhoneNumberConfirmed")
+                        .HasColumnType("bit");
 
                     b.Property<string>("PostCode")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Title")
+                    b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("TwoFactorEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("UserName")
+                        .HasColumnType("nvarchar(256)")
+                        .HasMaxLength(256);
 
                     b.HasKey("Id");
 
-                    b.ToTable("Shops");
-                });
+                    b.HasIndex("NormalizedEmail")
+                        .HasName("EmailIndex");
 
-            modelBuilder.Entity("getOrderWeb.Models.DbModels.ShopOwner", b =>
-                {
-                    b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
+                    b.HasIndex("NormalizedUserName")
+                        .IsUnique()
+                        .HasName("UserNameIndex")
+                        .HasFilter("[NormalizedUserName] IS NOT NULL");
 
-                    b.Property<string>("Address")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PostCode")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("ShopId")
-                        .HasColumnType("int");
-
-                    b.HasIndex("ShopId");
-
-                    b.HasDiscriminator().HasValue("ShopOwner");
+                    b.ToTable("AspNetUsers");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -503,7 +446,7 @@ namespace getOrderWeb.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                    b.HasOne("getOrderWeb.Models.DbModels.ShopOwner", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -512,7 +455,7 @@ namespace getOrderWeb.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                    b.HasOne("getOrderWeb.Models.DbModels.ShopOwner", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -527,7 +470,7 @@ namespace getOrderWeb.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                    b.HasOne("getOrderWeb.Models.DbModels.ShopOwner", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -536,7 +479,7 @@ namespace getOrderWeb.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                    b.HasOne("getOrderWeb.Models.DbModels.ShopOwner", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -545,16 +488,9 @@ namespace getOrderWeb.Data.Migrations
 
             modelBuilder.Entity("getOrderWeb.Models.DbModels.Category", b =>
                 {
-                    b.HasOne("getOrderWeb.Models.DbModels.Shop", "Shop")
-                        .WithMany("Categories")
-                        .HasForeignKey("ShopId");
-                });
-
-            modelBuilder.Entity("getOrderWeb.Models.DbModels.Customer", b =>
-                {
-                    b.HasOne("getOrderWeb.Models.DbModels.Shop", "Shop")
-                        .WithMany("Customers")
-                        .HasForeignKey("ShopId");
+                    b.HasOne("getOrderWeb.Models.DbModels.ShopOwner", "ShopOwner")
+                        .WithMany()
+                        .HasForeignKey("ShopOwnerId");
                 });
 
             modelBuilder.Entity("getOrderWeb.Models.DbModels.Order", b =>
@@ -563,9 +499,9 @@ namespace getOrderWeb.Data.Migrations
                         .WithMany("Orders")
                         .HasForeignKey("CustomerId");
 
-                    b.HasOne("getOrderWeb.Models.DbModels.Shop", "Shop")
-                        .WithMany("Orders")
-                        .HasForeignKey("ShopId");
+                    b.HasOne("getOrderWeb.Models.DbModels.ShopOwner", "ShopOwner")
+                        .WithMany()
+                        .HasForeignKey("ShopOwnerId");
                 });
 
             modelBuilder.Entity("getOrderWeb.Models.DbModels.OrderDetail", b =>
@@ -581,9 +517,9 @@ namespace getOrderWeb.Data.Migrations
 
             modelBuilder.Entity("getOrderWeb.Models.DbModels.Product", b =>
                 {
-                    b.HasOne("getOrderWeb.Models.DbModels.Shop", "Shop")
-                        .WithMany("Products")
-                        .HasForeignKey("ShopId");
+                    b.HasOne("getOrderWeb.Models.DbModels.ShopOwner", "ShopOwner")
+                        .WithMany()
+                        .HasForeignKey("ShopOwnerId");
                 });
 
             modelBuilder.Entity("getOrderWeb.Models.DbModels.ProductCategory", b =>
@@ -595,13 +531,6 @@ namespace getOrderWeb.Data.Migrations
                     b.HasOne("getOrderWeb.Models.DbModels.Product", "Product")
                         .WithMany("ProductCategories")
                         .HasForeignKey("ProductId");
-                });
-
-            modelBuilder.Entity("getOrderWeb.Models.DbModels.ShopOwner", b =>
-                {
-                    b.HasOne("getOrderWeb.Models.DbModels.Shop", "Shop")
-                        .WithMany("ShopOwners")
-                        .HasForeignKey("ShopId");
                 });
 #pragma warning restore 612, 618
         }

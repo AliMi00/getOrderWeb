@@ -1,8 +1,18 @@
 {
   "dependencies": {
-    "mssql1": {
+    "mssql2": {
       "type": "mssql.local",
-      "connectionId": "DefaultConnection"
+      "connectionId": "OrderContext"
+    },
+    "mssql3": {
+      "type": "mssql.local",
+      "connectionId": "ProductContext"
+    },
+    "mssql1": {
+      "resourceId": null,
+      "type": "mssql.local",
+      "connectionId": "DefaultConnection",
+      "secretStore": null
     }
   }
 }

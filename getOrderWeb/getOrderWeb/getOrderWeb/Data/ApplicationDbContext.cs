@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace getOrderWeb.Data
 {
-    public class ApplicationDbContext : IdentityDbContext, IApplicationDbContext
+    public class ApplicationDbContext : IdentityDbContext<ShopOwner>, IApplicationDbContext
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
@@ -21,7 +21,6 @@ namespace getOrderWeb.Data
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderDetail> OrderDetails { get; set; }
         public DbSet<ProductCategory> ProductCategories { get; set; }
-        public DbSet<Shop> Shops { get; set; }
         public DbSet<ShopOwner> ShopOwners { get; set; }
 
         public override int SaveChanges()
@@ -39,5 +38,19 @@ namespace getOrderWeb.Data
             return base.SaveChangesAsync(acceptAllChangesOnSuccess, cancellationToken);
         }
 
+        public Task SaveChangesAsync()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Add(Order order)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update(Order order)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

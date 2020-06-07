@@ -11,7 +11,5 @@ namespace getOrderWeb.Models.DbModels
         public string PostCode { get; set; }
         public string Address { get; set; }
 
-        public Shop Shop { get; set; }
-
     }
 }
