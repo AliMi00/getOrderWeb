@@ -1,0 +1,16 @@
+{
+  "dependencies": {
+    "mssql2": {
+      "type": "mssql",
+      "connectionId": "OrderContext"
+    },
+    "mssql3": {
+      "type": "mssql",
+      "connectionId": "ProductContext"
+    },
+    "mssql1": {
+      "type": "mssql",
+      "connectionId": "DefaultConnection"
+    }
+  }
+}

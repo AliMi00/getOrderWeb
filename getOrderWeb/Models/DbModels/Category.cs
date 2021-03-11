@@ -1,0 +1,24 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace getOrderWeb.Models.DbModels
+{
+    public class Category
+    {
+        public int Id { get; set; }
+        [StringLength(30, MinimumLength = 5)]
+        [Required]
+        [Display(Name = "عنوان دسته")]
+        public string Title { get; set; }
+        public ICollection<ProductCategory> ProductCategories { get; set; }
+        [Display(Name = "تاریخ ایجاد")]
+        public DateTime CreationDate { get; set; }
+        public DateTime? DisableDate { get; set; }
+        public DateTime? RemoveDate { get; set; }
+        public ShopOwner ShopOwner { get; set; }
+
+    }
+}
