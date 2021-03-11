@@ -1,8 +1,5 @@
 G:\drive_D\c#\My Projects\getOrder\getOrderWeb\getOrderWeb\getOrderWeb\bin\Debug\netcoreapp3.1\appsettings.Development.json
 G:\drive_D\c#\My Projects\getOrder\getOrderWeb\getOrderWeb\getOrderWeb\bin\Debug\netcoreapp3.1\appsettings.json
-G:\drive_D\c#\My Projects\getOrder\getOrderWeb\getOrderWeb\getOrderWeb\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
-G:\drive_D\c#\My Projects\getOrder\getOrderWeb\getOrderWeb\getOrderWeb\bin\Debug\netcoreapp3.1\Properties\serviceDependencies.json
-G:\drive_D\c#\My Projects\getOrder\getOrderWeb\getOrderWeb\getOrderWeb\bin\Debug\netcoreapp3.1\Properties\serviceDependencies.local.json
 G:\drive_D\c#\My Projects\getOrder\getOrderWeb\getOrderWeb\getOrderWeb\bin\Debug\netcoreapp3.1\getOrderWeb.StaticWebAssets.xml
 G:\drive_D\c#\My Projects\getOrder\getOrderWeb\getOrderWeb\getOrderWeb\bin\Debug\netcoreapp3.1\getOrderWeb.exe
 G:\drive_D\c#\My Projects\getOrder\getOrderWeb\getOrderWeb\getOrderWeb\bin\Debug\netcoreapp3.1\getOrderWeb.deps.json
@@ -189,3 +186,4 @@ G:\drive_D\c#\My Projects\getOrder\getOrderWeb\getOrderWeb\getOrderWeb\obj\Debug
 G:\drive_D\c#\My Projects\getOrder\getOrderWeb\getOrderWeb\getOrderWeb\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\_ViewImports.cshtml.g.cs
 G:\drive_D\c#\My Projects\getOrder\getOrderWeb\getOrderWeb\getOrderWeb\obj\Debug\netcoreapp3.1\Razor\Views\Products\index.cshtml.g.cs
 G:\drive_D\c#\My Projects\getOrder\getOrderWeb\getOrderWeb\getOrderWeb\obj\Debug\netcoreapp3.1\getOrderWeb.csprojAssemblyReference.cache
+G:\drive_D\c#\My Projects\getOrder\getOrderWeb\getOrderWeb\getOrderWeb\obj\Debug\netcoreapp3.1\scopedcss\bundle\getOrderWeb.styles.css

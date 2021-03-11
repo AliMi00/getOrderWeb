@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "cc/UqGLZnm1lZX6lNu2rfgxvlkPPR3xnjz8NE9Q47ec9zDLDQHwR/2vA3NQIuXdYD0aUzXpj5a8Ygx27+hzpfQ==",
+  "dgSpecHash": "gU/zukk63f0DcejFU+XcDnNcD5XY14qMN4KbdaLDmiFCNJ5GXLK+61kZqmNIPNck70OeL41hEee+ZqRbNHaMLg==",
   "success": true,
   "projectFilePath": "G:\\drive_D\\c#\\My Projects\\getOrder\\getOrderWeb\\getOrderWeb\\getOrderWeb\\getOrderWeb.csproj",
   "expectedPackageFiles": [
@@ -175,8 +175,7 @@
     "C:\\Users\\amm57\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\amm57\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
     "C:\\Users\\amm57\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
-    "C:\\Users\\amm57\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512",
-    "C:\\Users\\amm57\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.1.2\\microsoft.aspnetcore.app.ref.3.1.2.nupkg.sha512"
+    "C:\\Users\\amm57\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512"
   ],
   "logs": []
 }
